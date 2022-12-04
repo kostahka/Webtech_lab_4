@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mvc">
+    <output-path>$PROJECT_DIR$/out/artifacts/mvc</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Webtech_lab_4" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: jakarta.mvc:jakarta.mvc-api:2.0.0" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Webtech_lab_4/web/Web" />
+    </root>
+  </artifact>
+</component>
