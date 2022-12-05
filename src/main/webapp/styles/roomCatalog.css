@@ -1,0 +1,41 @@
+.catalog{
+    width: 100%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table{
+    width: 80%;
+    background-color: #3c3f41;
+    color: #274d9a;
+    border: #323232 solid 3px;
+    border-radius: 10px;
+}
+tr{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 15px;
+    margin: 0px 10px;
+}
+td{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: #313335 solid 3px;
+    border-radius: 10px;
+    color: #b1c6c6;
+    text-align: center;
+}
+.occupyBtn{
+    margin: 10px;
+    width: 70px;
+    height: 30px;
+    background-color: #2e65cc;
+    border: #274d9a solid 1px;
+    border-radius: 5px;
+    color: #bbbbbb;
+    transform: translate(0, 7px);
+}

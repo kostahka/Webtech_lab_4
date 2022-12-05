@@ -1,0 +1,41 @@
+.navigationBar{
+    background-color: #3c3f41;
+    border-bottom: #323232 solid 2px;
+    border-top: #323232 solid 2px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: 10%;
+    width: 100%;
+}
+.auth{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-end;
+    margin: 5%;
+}
+.auth button{
+    transform: translate(0, -3px);
+    margin: 0 2%;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    border: #274d9a solid 1px;
+    background-color: #2e65cc;
+    color: #bbbbbb;
+}
+.navigation{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.navigation button{
+    transform: translate(0, -3px);
+    margin: 0 1%;
+    width: 140px;
+    height: 40px;
+    text-align: center;
+    border: #323232 solid 1px;
+    background-color: #87939a;
+    color: #313335;
+}
