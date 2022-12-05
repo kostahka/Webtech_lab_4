@@ -3,4 +3,33 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+    <filter>
+        <filter-name>CatalogFilter</filter-name>
+        <filter-class>by.bsuir.lab4.filter.CatalogFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CatalogFilter</filter-name>
+        <url-pattern>/catalog</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>CatalogEditFilter</filter-name>
+        <filter-class>by.bsuir.lab4.filter.CatalogEditorFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CatalogEditFilter</filter-name>
+        <url-pattern>/catalog/edit</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>LangFilter</filter-name>
+        <filter-class>by.bsuir.lab4.filter.LanguageFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>LangFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

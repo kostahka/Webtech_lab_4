@@ -1,10 +1,9 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Title</title>
 </head>
-<body class="generalBackGround">
-<jsp:forward page="WEB-INF/pages/roomCatalogEditor.jsp"/>
+<body>
+<jsp:forward page="/signUp"></jsp:forward>
 </body>
 </html>

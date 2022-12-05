@@ -8,10 +8,15 @@
     <title>Login</title>
 </head>
 <body>
-<jsp:include page="../components/header.jsp"/>
+<jsp:include page="/WEB-INF/components/header.jsp"/>
 <div class="infoLabel">
     <div class="loginForm">
-        <form method="get">
+        <form method="post" action="login">
+            <label>
+                <% if(request.getAttribute("loginError") != null) {%>
+                <%= "Cannot login" %>
+                <% }%>
+            </label>
             <div>
                 <input class="signInForm" type="text" id="username" name="username" placeholder="login"
                        required>

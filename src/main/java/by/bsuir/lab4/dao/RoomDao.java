@@ -46,6 +46,16 @@ public class RoomDao {
             throw new DaoException(e.getMessage());
         }
     }
+    public static List<Room> findAll() throws DaoException{
+        List<Object> params = Collections.singletonList(null);
+        String sql = QueryPrepare.makeSelectQuery(null, null, Room.TABLE_NAME);
+        try {
+            List<Room> rooms = RepositoryFactory.getRoomRepository().queryAll(sql, params);
+            return rooms;
+        } catch (RepositoryException e) {
+            throw new DaoException(e.getMessage());
+        }
+    }
     public static void Save(Room room) throws DaoException {
         try {
             RepositoryFactory.getRoomRepository().save(room);

@@ -8,10 +8,7 @@ import by.bsuir.lab4.exception.RepositoryException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public abstract class AbstractRepository<T extends Entity> implements IRepository<T>{
 
@@ -44,11 +41,18 @@ public abstract class AbstractRepository<T extends Entity> implements IRepositor
         String sql;
         if (item.getId() != null) {
             sql = QueryPrepare.makeUpdateQuery(getFields(item), getTableName());
+            DatabaseQuery.getInstance().PutExecuteUpdate(sql,
+                    Arrays.asList(getFields(item).values().toArray()));
         } else {
             sql = QueryPrepare.makeInsertQuery(getFields(item), getTableName());
+            Map<String, Object> itemFields = getFields(item);
+            if(itemFields.containsKey("id"))
+                itemFields.remove("id");
+
+            DatabaseQuery.getInstance().PutExecuteUpdate(sql,
+                    Arrays.asList(itemFields.values().toArray()));
         }
 
-        DatabaseQuery.getInstance().PutExecuteUpdate(sql,
-                Arrays.asList(getFields(item).values().toArray()));
+
     }
 }

@@ -60,9 +60,14 @@ public class DatabaseConnectionManager {
                     String url = property.getProperty("db.url");
                     String name = property.getProperty("db.name");
                     String password = property.getProperty("db.password");
+                    String driver = property.getProperty("db.driver");
+
+                    Class.forName(driver);
                     connection = DriverManager.getConnection(url, name, password);
                 } catch (SQLException e) {
                     throw new IllegalArgumentException();
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
                 }
                 connections.push(connection);
             }

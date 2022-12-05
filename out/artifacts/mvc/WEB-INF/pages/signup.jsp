@@ -11,7 +11,13 @@
 <jsp:include page="../components/header.jsp"/>
 <div class="infoLabel">
     <div class="loginForm">
-        <form method="get">
+
+        <form method="post" action="signUp">
+            <label>
+            <% if(request.getAttribute("signUpError") != null) {%>
+            <%= "The username '" + request.getAttribute("signUpError") + "' is busy" %>
+            <% }%>
+            </label>
             <div>
                 <input class="signInForm" type="text" id="username" name="username" placeholder="login"
                        required>

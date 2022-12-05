@@ -1,3 +1,5 @@
+<%@ page import="by.bsuir.lab4.entity.Room" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,20 +20,35 @@
                 <th>Occupied</th>
                 <th></th>
             </tr>
+            <jsp:useBean id="roomList" scope="request" type="java.util.List"/>
+            <%
+                for (Room room : (List<Room>)roomList) {
+            %>
                 <tr>
                     <td>
-                            111
+                        <%=room.getRoomNumber()%>
                     </td>
                     <td>
-                            Occupied
+                        <%if(room.getOccupied()){%>
+                        <label>Occupied</label>
+                        <%} else {%>
+                        <label>Free</label>
+                        <%}%>
                     </td>
                     <td>
-                        <form method="post">
-                            <input type="hidden" id="roomId" name="roomId" value="1">
+                        <%if(room.getOccupied()){%>
+                        <form method="post" action="edit">
+                            <input type="hidden" id="roomId" name="roomId"
+                                   value="<%=room.getId()%>">
                             <input class="deoccupyBtn" type="submit" value="deoccupy">
                         </form>
+                        <%} else {%>
+                        <label>Free</label>
+                        <%}%>
+
                     </td>
                 </tr>
+            <%}%>
         </table>
     </div>
     <div class="addPanel">

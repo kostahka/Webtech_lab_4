@@ -13,7 +13,7 @@ public class QueryPrepare {
     private static final String VALUES = " VALUES";
 
     public static String makeInsertQuery(Map<String, Object> fields, String table) {
-        StringBuilder columns = new StringBuilder("(");
+        StringBuilder columns = new StringBuilder(" (");
         StringBuilder values = new StringBuilder("(");
 
         for (Map.Entry<String, Object> entry : fields.entrySet()) {
@@ -53,16 +53,17 @@ public class QueryPrepare {
     public static String makeSelectQuery(String column, Object value, String table) {
         StringBuilder query = new StringBuilder();
         if (value != null) {
-            query.append(" WHERE `" + column + "` =?");
+            query.append(" WHERE " + column + " =?");
         }
 
-        return SELECT_QUERY + table + SET + query;
+        return SELECT_QUERY + table + query;
     }
 
     public static void prepare(PreparedStatement preparedStatement, List<Object> params) throws SQLException {
         int length = params.size();
         for (int i = 0; i < length; i++) {
             Object param = params.get(i);
+            if(param != null)
             if (!(param instanceof Integer)) {
                 preparedStatement.setString(i + 1, String.valueOf(param));
             } else {

@@ -1,4 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<fmt:setLocale value="${sessionScope.language}"/>
+<fmt:setBundle basename="naming" var="naming"/>
+
+<fmt:message bundle="${naming}" key="signUp.isBusy" var="isBusy"/>
+<fmt:message bundle="${naming}" key="signUp.signUp" var="signUp"/>
+<fmt:message bundle="${naming}" key="signUp.theUsername" var="theUsername"/>
+<fmt:message bundle="${naming}" key="auth.password" var="plpassword"/>
+<fmt:message bundle="${naming}" key="auth.username" var="plusername"/>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,18 +21,26 @@
 <jsp:include page="../components/header.jsp"/>
 <div class="infoLabel">
     <div class="loginForm">
-        <form method="get">
+
+        <form method="post" action="signUp">
+            <label>
+            <% if(request.getAttribute("signUpError") != null) {%>
+                ${theUsername}
+                <%=request.getAttribute("signUpError")%>
+                ${isBusy}
+            <% }%>
+            </label>
             <div>
-                <input class="signInForm" type="text" id="username" name="username" placeholder="login"
-                       required>
+                <input class="signInForm" type="text" id="username" name="username"
+                       placeholder="${plusername}" required>
             </div>
 
             <div>
                 <input class="signInForm" type="password" id="password" name="password"
-                       placeholder="password"
+                       placeholder="${plpassword}"
                        required>
             </div>
-            <input id="signInButton" class="submitBtn" type="submit" value="Sign Up">
+            <input id="signInButton" class="submitBtn" type="submit" value="${signUp}">
         </form>
     </div>
 </div>

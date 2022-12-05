@@ -1,4 +1,19 @@
+<%@ page import="by.bsuir.lab4.entity.Room" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<fmt:setLocale value="${sessionScope.language}"/>
+<fmt:setBundle basename="naming" var="naming"/>
+
+<fmt:message bundle="${naming}" key="table.roomNumber" var="roomNumber"/>
+<fmt:message bundle="${naming}" key="table.occupyRoom" var="occupyRoom"/>
+<fmt:message bundle="${naming}" key="table.deoccupy" var="deoccupy"/>
+<fmt:message bundle="${naming}" key="table.free" var="free"/>
+<fmt:message bundle="${naming}" key="table.occupied" var="occupied"/>
+<fmt:message bundle="${naming}" key="table.occupy" var="occupy"/>
+<fmt:message bundle="${naming}" key="table.addRoom" var="addRoom"/>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -14,29 +29,44 @@
     <div>
         <table>
             <tr>
-                <th>Room number</th>
-                <th>Occupied</th>
+                <th>${roomNumber}</th>
+                <th>${occupied}</th>
                 <th></th>
             </tr>
+            <jsp:useBean id="roomList" scope="request" type="java.util.List"/>
+            <%
+                for (Room room : (List<Room>)roomList) {
+            %>
                 <tr>
                     <td>
-                            111
+                        <%=room.getRoomNumber()%>
                     </td>
                     <td>
-                            Occupied
+                        <%if(room.getOccupied()){%>
+                        <label>${occupied}</label>
+                        <%} else {%>
+                        <label>${free}</label>
+                        <%}%>
                     </td>
                     <td>
-                        <form method="post">
-                            <input type="hidden" id="roomId" name="roomId" value="1">
-                            <input class="deoccupyBtn" type="submit" value="deoccupy">
+                        <%if(room.getOccupied()){%>
+                        <form method="post" action="edit">
+                            <input type="hidden" id="roomId" name="roomId"
+                                   value="<%=room.getId()%>">
+                            <input class="deoccupyBtn" type="submit" value="${deoccupy}">
                         </form>
+                        <%} else {%>
+                        <label>${free}</label>
+                        <%}%>
+
                     </td>
                 </tr>
+            <%}%>
         </table>
     </div>
     <div class="addPanel">
         <button class="addBtn"
-                onclick="document.getElementById('addRoom').style.display='flex'">Add room</button>
+                onclick="document.getElementById('addRoom').style.display='flex'">${addRoom}</button>
     </div>
     <jsp:include page="/WEB-INF/components/addRoomForm.jsp"/>
 </body>

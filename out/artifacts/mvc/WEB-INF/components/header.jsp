@@ -8,13 +8,13 @@
 <body>
 <div class="navigationBar">
     <div class="navigation">
-        <button><a>Catalog</a></button>
-        <button><a>Change Catalog</a></button>
+        <a href="${pageContext.servletContext.contextPath}/catalog"><button>Catalog</button></a>
+        <a href="${pageContext.servletContext.contextPath}/catalog/edit"><button>Change Catalog</button></a>
     </div>
     <div class="auth">
-        <button><a>Login</a></button>
-        <button><a>Sign Up</a></button>
-        <button><a>Sign Out</a></button>
+        <a href="${pageContext.servletContext.contextPath}/login"><button>Login</button></a>
+        <a href="${pageContext.servletContext.contextPath}/signUp"><button>Sign Up</button></a>
+        <a><button>Sign Out</button></a>
     </div>
 </div>
 
